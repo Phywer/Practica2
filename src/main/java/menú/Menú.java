@@ -21,21 +21,15 @@ public class Menú {
 
 
         private OpcionesMenu(String descripción) {
-
             this.descripción = descripción;
-
         }
 
         public String getDescripción(){
-
             return descripción;
-
         }
 
         public static OpcionesMenu getOpcion(int posicion){
-
             return values()[posicion];
-
         }
 
         public static String getMenu(){
@@ -48,14 +42,8 @@ public class Menú {
                 sb.append(".- ");
                 sb.append(opcion.getDescripción());
                 sb.append("\n");
-
             }
-
             return sb.toString();
-
         }
-
-
     }
-
 }

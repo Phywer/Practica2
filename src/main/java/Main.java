@@ -56,8 +56,6 @@ public class Main {
             case LISTAR_FACTURAS:
                 Métodos_Menú.listaFacturas();
                 break;
-
         }
     }
-
 }

@@ -11,25 +11,20 @@ public class Dirección {
         this.códigoPostal = códigoPostal;
         this.provincia = provincia;
         this.población = población;
-
     }
 
     public Dirección(){
-
     }
 
     public int getCódigoPostal() {
-
         return códigoPostal;
     }
 
     public String getProvincia() {
-
         return provincia;
     }
 
     public String getPoblación() {
-
         return población;
     }
 

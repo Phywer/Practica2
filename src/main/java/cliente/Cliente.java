@@ -1,5 +1,6 @@
 package cliente;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -12,7 +13,7 @@ public abstract class Cliente {
     private String nombre;
     private String nif;
     private String correo;
-    private GregorianCalendar fecha_alta;
+    private LocalDate fecha_alta;
 
     private List<Llamada> listaLlamadas;
     private List<Factura> listaFacturas;
@@ -34,51 +35,38 @@ public abstract class Cliente {
         this.correo = correo;
         this.tarifa = tarifa;
         this.dirección = dirección;
-        this.fecha_alta = new GregorianCalendar();
+        this.fecha_alta = LocalDate.now();
         this.listaLlamadas = new ArrayList<Llamada>();
         this.listaFacturas = new ArrayList<Factura>();
-
     }
 
-    public GregorianCalendar getFecha(){
-
+    public LocalDate getFecha(){
         return fecha_alta;
 
     }
 
     public Tarifa getTarifa(){
-
         return tarifa;
     }
 
     public void addLlamada(Llamada llamada){
-
         this.listaLlamadas.add(llamada);
-
     }
 
     public void addFactura(Factura factura){
-
         this.listaFacturas.add(factura);
-
     }
 
     public String getNif(){
-
         return nif;
-
     }
 
     public void setTarifa(Tarifa precio){
-
         this.tarifa = precio;
-
     }
 
     public String getNombre(){
-
         return nombre;
-
     }
 
     public String getCorreo() {

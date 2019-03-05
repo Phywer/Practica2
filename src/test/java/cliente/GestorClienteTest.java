@@ -8,8 +8,9 @@ import llamada.Llamada;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -75,10 +76,10 @@ public class GestorClienteTest {
        gestorcliente.altaLLamada(nuevo2.getNif(), llamada2);
 
 
-       GregorianCalendar fechaInicio = new GregorianCalendar();
-       GregorianCalendar fechaInicio2 = new GregorianCalendar();
-       GregorianCalendar fechaFin = new GregorianCalendar();
-       GregorianCalendar fechaFin2 = new GregorianCalendar();
+       LocalDate fechaInicio = LocalDate.of(2018,12,2);
+       LocalDate  fechaInicio2 = LocalDate.of(2018,12,23);
+       LocalDate  fechaFin = LocalDate.now();
+       LocalDate  fechaFin2 = LocalDate.now();
        factura = new Factura("365", 107.27f, tarifa, fechaInicio, fechaFin);
        factura2 = new Factura("27", 3.7f, tarifa2, fechaInicio2, fechaFin2);
        gestorcliente.emitirFactura(nuevo, factura);
