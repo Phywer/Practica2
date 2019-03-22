@@ -5,6 +5,7 @@ import excepciones.ClienteNoEncontrado;
 import factura.Tarifa;
 import llamada.Llamada;
 
+import java.io.*;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -49,11 +50,11 @@ public class Metodos_Menu {
             String apellidos = entrada.next();
 
             Cliente cliente = new Particular(nombre, apellidos, nif, correo, nueva_tarifa, direccion);
-            GestorCliente.darAlta(cliente);
+            gestorCliente.darAlta(cliente);
 
         } else {
             Cliente cliente = new Empresa(nombre, nif, correo, nueva_tarifa, direccion);
-            GestorCliente.darAlta(cliente);
+            gestorCliente.darAlta(cliente);
         }
     }
 
@@ -61,7 +62,7 @@ public class Metodos_Menu {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
-        GestorCliente.darBaja(nif);
+        gestorCliente.darBaja(nif);
     }
 
     public void cambiarTarifa() throws ClienteNoEncontrado{
@@ -70,7 +71,7 @@ public class Metodos_Menu {
         String nif = entrada.next();
         System.out.println("Escriba su tarifa: ");
         int tarifa = entrada.nextInt();
-        GestorCliente.cambiarTarifa(nif, tarifa);
+        gestorCliente.cambiarTarifa(nif, tarifa);
     }
 
     public void datosCliente() throws ClienteNoEncontrado{
@@ -79,11 +80,11 @@ public class Metodos_Menu {
         String nif = entrada.next();
         System.out.println("¿Es un particular o una empresa ?: ");
         String tipo = entrada.next();
-        GestorCliente.recuperarDatos(nif);
+        gestorCliente.recuperarDatos(nif);
     }
 
     public void listarClientes(){
-        GestorCliente.recuperarListado();
+        gestorCliente.recuperarListado();
     }
 
     public void altaLLamada() throws ClienteNoEncontrado{
@@ -95,14 +96,14 @@ public class Metodos_Menu {
         System.out.println("Escriba la duracion de la llamada realizada: ");
         int duracion = entrada.nextInt();
         Llamada llamada = new Llamada(num_tel, duracion);
-        GestorCliente.altaLLamada(nif, llamada);
+        gestorCliente.altaLLamada(nif, llamada);
     }
 
     public void listaLlamada() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
-        GestorCliente.listarLlamadas(nif);
+        gestorCliente.listarLlamadas(nif);
     }
 
     public void emitirFactura(){
@@ -134,7 +135,7 @@ public class Metodos_Menu {
         System.out.println("Escriba el codigo de la factura: ");
         String codigo = entrada.next();
 
-        GestorCliente.recuperarDatosFacturas(codigo);
+        gestorCliente.recuperarDatosFacturas(codigo);
     }
 
     public void listaFacturas(){
@@ -142,6 +143,42 @@ public class Metodos_Menu {
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
 
-        GestorCliente.listaFacturas(nif);
+        gestorCliente.listaFacturas(nif);
+    }
+
+    public void GuardarCliente (){
+
+        FileOutputStream fos;
+        ObjectOutputStream oos;
+
+        try {
+            fos =new FileOutputStream("agenda.bin");
+            oos =new ObjectOutputStream(fos);
+            oos.writeObject(gestorCliente);
+            oos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void cargarCliente(){
+        FileInputStream fis;
+        ObjectInputStream ois;
+
+        try{
+            fis =new FileInputStream("agenda.bin");
+            ois =new ObjectInputStream(fis);
+            gestorCliente = (GestorCliente)ois.readObject();
+            ois.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

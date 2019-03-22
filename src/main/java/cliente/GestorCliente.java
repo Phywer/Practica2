@@ -4,6 +4,10 @@ import excepciones.ClienteNoEncontrado;
 import factura.*;
 import llamada.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,8 +15,8 @@ import java.util.List;
 
 public class GestorCliente {
 
-    private static HashMap<String, Cliente> listaClientes;
-    private static HashMap<String, Factura> listaFacturas;
+    private HashMap<String, Cliente> listaClientes;
+    private HashMap<String, Factura> listaFacturas;
 
     public GestorCliente(){
 
@@ -47,7 +51,7 @@ public class GestorCliente {
         }
     }
 
-    public static void darAlta(Cliente cliente) throws ClienteNoEncontrado{
+    public void darAlta(Cliente cliente) throws ClienteNoEncontrado{
         if(listaClientes.containsKey(cliente.getNif())){
             throw new ClienteNoEncontrado();
         } else {
@@ -57,7 +61,7 @@ public class GestorCliente {
     }
 
 
-    public static void darBaja(String nif) throws ClienteNoEncontrado{
+    public void darBaja(String nif) throws ClienteNoEncontrado{
 
         if( ! listaClientes.containsKey(nif)){
             throw new ClienteNoEncontrado();
@@ -66,7 +70,7 @@ public class GestorCliente {
         }
     }
 
-    public static void cambiarTarifa(String nif, int precio) throws ClienteNoEncontrado{
+    public void cambiarTarifa(String nif, int precio) throws ClienteNoEncontrado{
         if ( ! listaClientes.containsKey(nif)){
             throw new ClienteNoEncontrado();
         } else {
@@ -74,7 +78,7 @@ public class GestorCliente {
         }
     }
 
-    public static Cliente recuperarDatos(String nif) throws ClienteNoEncontrado{
+    public Cliente recuperarDatos(String nif) throws ClienteNoEncontrado{
         if ( ! listaClientes.containsKey(nif)){
             throw new ClienteNoEncontrado();
         } else {
@@ -83,11 +87,11 @@ public class GestorCliente {
         }
     }
 
-    public static HashMap<String, Cliente> recuperarListado(){
+    public HashMap<String, Cliente> recuperarListado(){
         return listaClientes;
     }
 
-    public static void altaLLamada(String nif, Llamada llamada) throws ClienteNoEncontrado{
+    public void altaLLamada(String nif, Llamada llamada) throws ClienteNoEncontrado{
         if ( ! listaClientes.containsKey(nif)){
             throw new ClienteNoEncontrado();
         } else {
@@ -95,7 +99,7 @@ public class GestorCliente {
         }
     }
 
-    public static List<Llamada> listarLlamadas(String nif) throws ClienteNoEncontrado{
+    public List<Llamada> listarLlamadas(String nif) throws ClienteNoEncontrado{
         if ( ! listaClientes.containsKey(nif)){
             throw new ClienteNoEncontrado();
         } else {
@@ -103,7 +107,7 @@ public class GestorCliente {
         }
     }
 
-    public static void emitirFactura(Cliente cliente, Factura factura) throws ClienteNoEncontrado{
+    public void emitirFactura(Cliente cliente, Factura factura) throws ClienteNoEncontrado{
         if ( ! listaClientes.containsKey(cliente.getNif())) {
             throw new ClienteNoEncontrado();
         } else {
@@ -112,7 +116,7 @@ public class GestorCliente {
         }
     }
 
-    public static Factura recuperarDatosFacturas(String código){
+    public Factura recuperarDatosFacturas(String código){
         if( ! listaFacturas.containsKey(código)){
             throw new IllegalArgumentException();
         } else {
@@ -121,9 +125,11 @@ public class GestorCliente {
         }
     }
 
-    public static List<Factura> listaFacturas(String nif){
+    public List<Factura> listaFacturas(String nif){
         Cliente cliente = listaClientes.get(nif);
         return listaClientes.get(nif).getListaFacturas();
     }
+
+
 }
 
