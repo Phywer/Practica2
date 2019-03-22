@@ -7,8 +7,8 @@ public class Empresa extends Cliente{
     public Empresa(){
     }
 
-    public Empresa(String nombre, String nif, String correo, Tarifa tarifa, Dirección dirección){
-        super(nombre, nif, correo, tarifa, dirección);
+    public Empresa(String nombre, String nif, String correo, Tarifa tarifa, Direccion direccion){
+        super(nombre, nif, correo, tarifa, direccion);
     }
 
 }

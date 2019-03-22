@@ -1,60 +1,60 @@
 import java.util.Scanner;
-
+import cliente.GestorCliente;
 import excepciones.ClienteNoEncontrado;
-import menú.*;
+import menu.*;
 
 public class Main {
 
     public static void main(String[] args) throws ClienteNoEncontrado {
 
-        System.out.println(Menú.OpcionesMenu.getMenu());
-
-        Scanner opcion = new Scanner(System.in);
+        Metodos_Menu metodos = new Metodos_Menu();
+        System.out.println(Menu.OpcionesMenu.getMenu());
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Elige una opción: ");
-        byte opción = opcion.nextByte();
+        byte opcion = scanner.nextByte();
 
-        Menú.OpcionesMenu opcionMenu = Menú.OpcionesMenu.getOpcion(opción);
+        Menu.OpcionesMenu opcionMenu = Menu.OpcionesMenu.getOpcion(opcion);
 
         switch (opcionMenu) {
 
             case ALTA_CLIENTE:
-                Métodos_Menú.darAltaCliente();
+                metodos.darAltaCliente();
                 break;
 
             case BORRAR_CLIENTE:
-                Métodos_Menú.darBajaCliente();
+                metodos.darBajaCliente();
                 break;
 
             case CAMBIAR_TARIFA:
-                Métodos_Menú.cambiarTarifa();
+                metodos.cambiarTarifa();
                 break;
 
             case DATOS_CLIENTE:
-                Métodos_Menú.datosCliente();
+                metodos.datosCliente();
                 break;
 
             case LISTADO_CLIENTES:
-                Métodos_Menú.listarClientes();
+                metodos.listarClientes();
                 break;
 
             case ALTA_LLAMADA:
-                Métodos_Menú.altaLLamada();
+                metodos.altaLLamada();
                 break;
 
             case LISTAR_LLAMADAS:
-                Métodos_Menú.listaLlamada();
+                metodos.listaLlamada();
                 break;
 
             case EMITIR_FACTURA:
-                Métodos_Menú.emitirFactura();
+                metodos.emitirFactura();
                 break;
 
             case DATOS_FACTURA:
-                Métodos_Menú.datosFactura();
+                metodos.datosFactura();
                 break;
 
             case LISTAR_FACTURAS:
-                Métodos_Menú.listaFacturas();
+                metodos.listaFacturas();
                 break;
         }
     }

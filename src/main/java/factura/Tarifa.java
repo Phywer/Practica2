@@ -2,17 +2,17 @@ package factura;
 
 public class Tarifa {
 
-    private int céntimos;
+    private int centimos;
 
     public Tarifa(){
     }
 
     public Tarifa(int euros){
-        this.céntimos = euros;
+        this.centimos = euros;
     }
 
     public int getPrecio(){
-        return céntimos;
+        return centimos;
     }
 
 }

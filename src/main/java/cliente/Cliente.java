@@ -20,7 +20,7 @@ public abstract class Cliente {
 
 
     private Tarifa tarifa;
-    private Dirección dirección;
+    private Direccion direccion;
     private Particular particular;
     //private Empresa empresa;
 
@@ -28,13 +28,13 @@ public abstract class Cliente {
 
     }
 
-    public Cliente(String nombre, String nif, String correo, Tarifa tarifa, Dirección dirección){
+    public Cliente(String nombre, String nif, String correo, Tarifa tarifa, Direccion direccion){
 
         this.nombre = nombre;
         this.nif = nif;
         this.correo = correo;
         this.tarifa = tarifa;
-        this.dirección = dirección;
+        this.direccion = direccion;
         this.fecha_alta = LocalDate.now();
         this.listaLlamadas = new ArrayList<Llamada>();
         this.listaFacturas = new ArrayList<Factura>();
@@ -81,8 +81,8 @@ public abstract class Cliente {
         return listaFacturas;
     }
 
-    public Dirección getDirección() {
-        return dirección;
+    public Direccion getDireccion() {
+        return direccion;
     }
 
     public Particular getParticular() {

@@ -1,6 +1,6 @@
-package menú;
+package menu;
 
-public class Menú {
+public class Menu {
 
     public enum OpcionesMenu {
 

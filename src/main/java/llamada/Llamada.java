@@ -7,16 +7,16 @@ public class Llamada {
 
     private long numTel;
     private LocalDate fecha;
-    private int duración;
+    private int duracion;
 
     public Llamada(){
 
     }
 
-    public Llamada(long numTel, int duración){
+    public Llamada(long numTel, int duracion){
 
         this.numTel = numTel;
-        this.duración = duración;
+        this.duracion = duracion;
         this.fecha = LocalDate.now();
 
     }
@@ -30,7 +30,7 @@ public class Llamada {
     }
 
     public int getDuración() {
-        return duración;
+        return duracion;
     }
 
 }

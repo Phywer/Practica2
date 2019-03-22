@@ -5,8 +5,8 @@ import java.util.GregorianCalendar;
 
 public class Factura {
 
-    private String código;
-    private LocalDate fechaEmisión;
+    private String codigo;
+    private LocalDate fechaEmision;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private float importe;
@@ -17,10 +17,10 @@ public class Factura {
 
     }
 
-    public Factura(String código, float importe, Tarifa tarifa, LocalDate fechaInicio, LocalDate fechaFin){
+    public Factura(String codigo, float importe, Tarifa tarifa, LocalDate fechaInicio, LocalDate fechaFin){
 
-        this.código = código;
-        this.fechaEmisión =LocalDate.now();
+        this.codigo = codigo;
+        this.fechaEmision =LocalDate.now();
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.importe = importe;
@@ -28,11 +28,11 @@ public class Factura {
     }
 
     public LocalDate getFecha(){
-        return fechaEmisión;
+        return fechaEmision;
     }
 
-    public String getCógido(){
-        return código;
+    public String getCodigo(){
+        return codigo;
     }
 
 

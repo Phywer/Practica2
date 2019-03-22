@@ -61,13 +61,13 @@ public class GestorClienteTest {
        String provincia2 = datos2.getProvincia();
        String población2 = datos2.getPoblacion(provincia);
 
-       Dirección dirección = new Dirección(códigoPostal, provincia, población);
-       Dirección dirección2 = new Dirección(códigoPostal2, provincia2, población2);
+       Direccion direccion = new Direccion(códigoPostal, provincia, población);
+       Direccion direccion2 = new Direccion(códigoPostal2, provincia2, población2);
 
-       nuevo = new Empresa(nombre, nif, correo, tarifa, dirección);
+       nuevo = new Empresa(nombre, nif, correo, tarifa, direccion);
        gestorcliente.darAlta(nuevo);
 
-       nuevo2 = new Particular(nombre2, apellidos, nif2, correo2, tarifa2, dirección2);
+       nuevo2 = new Particular(nombre2, apellidos, nif2, correo2, tarifa2, direccion2);
        gestorcliente.darAlta(nuevo2);
 
        llamada = new Llamada(657191557, 300);
@@ -182,8 +182,8 @@ public class GestorClienteTest {
     @Test
     public void recuperarDatosFacturas() throws ClienteNoEncontrado{
 
-       assertEquals(factura, gestorcliente.recuperarDatosFacturas(factura.getCógido()));
-        assertEquals(factura2, gestorcliente.recuperarDatosFacturas(factura2.getCógido()));
+       assertEquals(factura, gestorcliente.recuperarDatosFacturas(factura.getCodigo()));
+        assertEquals(factura2, gestorcliente.recuperarDatosFacturas(factura2.getCodigo()));
 
     }
 

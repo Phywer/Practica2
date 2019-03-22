@@ -1,4 +1,4 @@
-package menú;
+package menu;
 
 import cliente.*;
 import excepciones.ClienteNoEncontrado;
@@ -8,11 +8,11 @@ import llamada.Llamada;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-public class Métodos_Menú {
+public class Metodos_Menu {
 
-    GestorCliente gestorCliente;
+    GestorCliente gestorCliente= new GestorCliente();
 
-    public static void darAltaCliente() throws ClienteNoEncontrado {
+    public void darAltaCliente() throws ClienteNoEncontrado {
 
         Scanner entrada = new Scanner(System.in);
 
@@ -32,7 +32,7 @@ public class Métodos_Menú {
         String provincia = entrada.next();
 
         System.out.println("Escriba la población: ");
-        String población = entrada.next();
+        String poblacion = entrada.next();
 
 
         System.out.println("Escriba su tarifa: ");
@@ -41,30 +41,30 @@ public class Métodos_Menú {
         System.out.println("Escriba su correo: ");
         String correo = entrada.next();
 
-        Dirección dirección = new Dirección(CPostal, provincia, población);
+        Direccion direccion = new Direccion(CPostal, provincia, poblacion);
         Tarifa nueva_tarifa = new Tarifa(tarifa);
 
         if(tipo.equals("P")){
             System.out.println("Escriba sus apellidos: ");
             String apellidos = entrada.next();
 
-            Cliente cliente = new Particular(nombre, apellidos, nif, correo, nueva_tarifa, dirección);
+            Cliente cliente = new Particular(nombre, apellidos, nif, correo, nueva_tarifa, direccion);
             GestorCliente.darAlta(cliente);
 
         } else {
-            Cliente cliente = new Empresa(nombre, nif, correo, nueva_tarifa, dirección);
+            Cliente cliente = new Empresa(nombre, nif, correo, nueva_tarifa, direccion);
             GestorCliente.darAlta(cliente);
         }
     }
 
-    public static void darBajaCliente() throws ClienteNoEncontrado{
+    public void darBajaCliente() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
         GestorCliente.darBaja(nif);
     }
 
-    public static void cambiarTarifa() throws ClienteNoEncontrado{
+    public void cambiarTarifa() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
@@ -73,7 +73,7 @@ public class Métodos_Menú {
         GestorCliente.cambiarTarifa(nif, tarifa);
     }
 
-    public static void datosCliente() throws ClienteNoEncontrado{
+    public void datosCliente() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
@@ -82,30 +82,30 @@ public class Métodos_Menú {
         GestorCliente.recuperarDatos(nif);
     }
 
-    public static void listarClientes(){
+    public void listarClientes(){
         GestorCliente.recuperarListado();
     }
 
-    public static void altaLLamada() throws ClienteNoEncontrado{
+    public void altaLLamada() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
         System.out.println("Escriba el número de teléfono al que ha llamado: ");
         long num_tel = entrada.nextLong();
-        System.out.println("Escriba la duración de la llamada realizada: ");
-        int duración = entrada.nextInt();
-        Llamada llamada = new Llamada(num_tel, duración);
+        System.out.println("Escriba la duracion de la llamada realizada: ");
+        int duracion = entrada.nextInt();
+        Llamada llamada = new Llamada(num_tel, duracion);
         GestorCliente.altaLLamada(nif, llamada);
     }
 
-    public static void listaLlamada() throws ClienteNoEncontrado{
+    public void listaLlamada() throws ClienteNoEncontrado{
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
         GestorCliente.listarLlamadas(nif);
     }
 
-    public static void emitirFactura(){
+    public void emitirFactura(){
         GregorianCalendar fechaInicio = new GregorianCalendar();
         GregorianCalendar fechaFin = new GregorianCalendar();
 
@@ -113,8 +113,8 @@ public class Métodos_Menú {
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();
 
-        System.out.println("Escriba el código de la factura: ");
-        String código = entrada.next();
+        System.out.println("Escriba el codigo de la factura: ");
+        String codigo = entrada.next();
 
         System.out.println("Escriba a partir de que día quiere que le emitamos su factura: ");
         int dia = entrada.nextInt();
@@ -129,15 +129,15 @@ public class Métodos_Menú {
         fechaFin.set(dia, mes+1, año);
     }
 
-    public static void datosFactura(){
+    public void datosFactura(){
         Scanner entrada = new Scanner(System.in);
-        System.out.println("Escriba el código de la factura: ");
-        String código = entrada.next();
+        System.out.println("Escriba el codigo de la factura: ");
+        String codigo = entrada.next();
 
-        GestorCliente.recuperarDatosFacturas(código);
+        GestorCliente.recuperarDatosFacturas(codigo);
     }
 
-    public static void listaFacturas(){
+    public void listaFacturas(){
         Scanner entrada = new Scanner(System.in);
         System.out.println("Escriba su DNI: ");
         String nif = entrada.next();

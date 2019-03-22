@@ -4,7 +4,6 @@ import excepciones.ClienteNoEncontrado;
 import factura.*;
 import llamada.*;
 
-import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -109,7 +108,7 @@ public class GestorCliente {
             throw new ClienteNoEncontrado();
         } else {
             cliente.getListaFacturas().add(factura);
-            listaFacturas.put(factura.getCógido(), factura);
+            listaFacturas.put(factura.getCodigo(), factura);
         }
     }
 
