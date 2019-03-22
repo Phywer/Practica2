@@ -49,12 +49,14 @@ public class GestorCliente {
     }
 
     public static void darAlta(Cliente cliente) throws ClienteNoEncontrado{
-        if(! listaClientes.containsKey(cliente.getNif())){
-            listaClientes.put(cliente.getNif(), cliente);
-        } else {
+        if(listaClientes.containsKey(cliente.getNif())){
             throw new ClienteNoEncontrado();
+        } else {
+            listaClientes.put(cliente.getNif(), cliente);
+
         }
     }
+
 
     public static void darBaja(String nif) throws ClienteNoEncontrado{
 

@@ -10,6 +10,8 @@ import java.util.Scanner;
 
 public class Métodos_Menú {
 
+    GestorCliente gestorCliente;
+
     public static void darAltaCliente() throws ClienteNoEncontrado {
 
         Scanner entrada = new Scanner(System.in);
